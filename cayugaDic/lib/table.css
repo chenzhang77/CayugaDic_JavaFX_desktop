@@ -1,0 +1,363 @@
+.background {
+    -fx-background-color: #827ffa;
+}
+.pane {
+    -fx-background-color: #8fbc8f;
+}
+#topPane {
+	-fx-background-color: #eef3f7;
+}
+
+#botPane {
+	-fx-background-color: #c1dce0;
+}
+
+#leftPane {
+	-fx-background-color: white;/*#dabe90; #ea6c00*/
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: Eurostile;
+    -fx-text-fill: #ffffff;
+    -fx-opacity: 0.6;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: Helvetica;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: Helvetica;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+	
+	-fx-base: White;
+    -fx-control-inner-background: White;
+    -fx-background-color: White;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+    
+  /* -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+    * 
+    */
+ /*    font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:12px;
+	text-shadow: 1px 1px 0px #fff;
+	background:#eaebec;
+	margin:20px;
+	border:#ccc 1px solid;
+
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+	* 
+	* -fx-background-color: #f5f9fc;
+ */   
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f5f9fc;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 11;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 10pt;
+    -fx-font-family: Helvetica;
+    -fx-text-fill: #0c0c0c;
+    -fx-alignment: center;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: #83e5ea;
+    -fx-table-cell-border-color: #83e5ea;
+}
+
+.table-row-cell {
+    -fx-cell-size: 40px;
+    -fx-font-size: 15pt;
+}
+
+.table-view .scroll-bar:vertical > .increment-button,
+.table-view .scroll-bar:vertical > .decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent transparent;
+    -fx-background-color: transparent;
+    /*-fx-background-color: transparent, derive(#1d1d1d,20%);
+     * 
+     */
+}
+
+.split-pane {
+    -fx-padding: 0 0 0 0;
+}
+.split-pane-divider {
+   -fx-background-color: transparent;
+}
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 0 0 0;
+}
+.split-pane:horizontal > .split-pane-divider {
+   -fx-background-color: transparent;
+}
+.split-pane:vertical > .split-pane-divider {
+   -fx-background-color: transparent;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#1d1d1d,20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#1d1d1d,50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: Eurostile;
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: white;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: Eurostile;
+}
+
+/* 
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family: Kai, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: black;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    
+   
+}
+#textBut_4 {
+  -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#textBut_3 {
+  -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    
+}
+#textBut_2 {
+  -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#textBut_1 {
+  -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#showButton  {
+    -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#deleteButton {
+    -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+#addButton {
+	
+	    		-fx-background-radius: 28em; 
+                -fx-min-width: 28px; 
+                -fx-min-height: 28px; 
+                -fx-max-width: 28px;
+                -fx-max-height: 28px;
+                -fx-background-repeat: stretch;   
+   				-fx-background-position: center center;
+                -fx-background-image: url('plus.png');
+}
+#textBut_1:pressed, .button:default:hover:pressed {
+		-fx-padding: 5 22 5 22;
+  	-fx-text-fill: #fcac45;
+
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family:Kai;
+    -fx-font-size: 11pt;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    
+   
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    
+    
+}
+#textBut_2:pressed, .button:default:hover:pressed {
+		-fx-padding: 5 22 5 22;
+  	-fx-text-fill: #fcac45;
+
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family:Kai;
+    -fx-font-size: 11pt;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    
+   
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    
+    
+}
+#textBut_3:pressed, .button:default:hover:pressed {
+		-fx-padding: 5 22 5 22;
+  	-fx-text-fill: #fcac45;
+
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family:Kai;
+    -fx-font-size: 11pt;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    
+   
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    
+    
+}
+#textBut_4:pressed, .button:default:hover:pressed {
+		-fx-padding: 5 22 5 22;
+  	-fx-text-fill: #fcac45;
+
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family:Kai;
+    -fx-font-size: 11pt;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    
+   
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    
+    
+}
+.button:hover {
+    -fx-background-color: white;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  
+  	-fx-padding: 5 22 5 22;
+  	-fx-text-fill: #fcac45;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family:Kai;
+    -fx-font-size: 11pt;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:focused {
+    -fx-text-fill: #fcac45;
+    -fx-border-radius: 2
+    
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}

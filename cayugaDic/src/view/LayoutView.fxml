@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainScene" maxHeight="600.0" maxWidth="1100.0" minHeight="600.0" minWidth="1100.0" prefHeight="600.0" prefWidth="1100.0" stylesheets="@../../lib/table.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DictionaryController">
+   <children>
+      <SplitPane dividerPositions="0.15" layoutX="153.0" layoutY="104.0" prefHeight="696.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <items>
+          <AnchorPane fx:id="leftPane" minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="222.0">
+               <children>
+                  <RadioButton fx:id="cayugaBut" layoutX="6.0" layoutY="65.0" mnemonicParsing="false" text="Cayuga to English" />
+                  <RadioButton fx:id="englishBut" layoutX="6.0" layoutY="24.0" mnemonicParsing="false" text="English to Cayuga" />
+                  <Button fx:id="searchBut" layoutX="33.0" layoutY="165.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="27.0" prefWidth="98.0" text="Search" AnchorPane.bottomAnchor="308.0" />
+                  <Button layoutX="12.0" layoutY="195.0" mnemonicParsing="false" onAction="#partialSearch" prefHeight="27.0" prefWidth="143.0" text="Partial Search" AnchorPane.bottomAnchor="278.0" />
+                  <Button layoutX="11.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="143.0" text="Related Word" AnchorPane.bottomAnchor="248.0" />
+                  <ImageView fitHeight="147.0" fitWidth="150.0" layoutX="8.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Untitled-1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="873.0">
+               <children>
+                  <TableView fx:id="dictionaryTable" layoutX="-8.0" maxHeight="880.0" minHeight="410.0" prefHeight="424.0" prefWidth="921.0" styleClass="background" AnchorPane.bottomAnchor="75.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="firsteColumn" minWidth="393.0" prefWidth="400.0" text="English" />
+                      <TableColumn maxWidth="72.0" prefWidth="72.0" />
+                        <TableColumn fx:id="lastColumn" minWidth="0.0" prefWidth="400.0" text="Cayuga" />
+                    </columns>
+                  </TableView>
+                  <Pane fx:id="botPane" layoutX="-1.0" layoutY="424.0" prefHeight="77.0" prefWidth="934.0">
+                     <children>
+                        <Button fx:id="addButton" layoutX="53.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleNewData" prefHeight="77.0" prefWidth="250.0" />
+                        <Button fx:id="showButton" layoutX="731.0" layoutY="25.0" mnemonicParsing="false" onAction="#showAction" text="Show" />
+                        <Button fx:id="deleteButton" layoutX="822.0" layoutY="25.0" mnemonicParsing="false" onAction="#deleteAction" text="Delete" />
+                        <Text layoutX="267.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welocme to Cayuga Dictionary" textAlignment="CENTER" wrappingWidth="298.8935546875" />
+                        <ImageView fx:id="logoImage" fitHeight="61.0" fitWidth="313.0" layoutX="612.0" layoutY="9.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../lib/Logo%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Pane fx:id="topPane" cacheShape="false" centerShape="false" layoutX="-1.0" layoutY="1.0" prefHeight="98.0" prefWidth="1100.0" stylesheets="@../../lib/table.css">
+         <children>
+            <TextField fx:id="inputText" layoutX="221.0" layoutY="49.0" onAction="#onEnter" prefHeight="32.0" prefWidth="460.0" promptText="search">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="textBut_2" layoutX="543.0" layoutY="12.0" mnemonicParsing="false" onAction="#textButAction_2" onMouseEntered="#MouseMoveText" prefHeight="27.0" prefWidth="48.0" text="ǫ" />
+            <Button fx:id="textBut_1" layoutX="425.0" layoutY="12.0" mnemonicParsing="false" onAction="#textButAction_1" onMouseEntered="#MouseMoveText" prefHeight="27.0" prefWidth="45.0" text="ˀ">
+               <font>
+                  <Font name="System Italic" size="9.0" />
+               </font></Button>
+            <Button fx:id="textBut_3" layoutX="484.0" layoutY="12.0" mnemonicParsing="false" onAction="#textButAction_3" onMouseEntered="#MouseMoveText" prefHeight="27.0" prefWidth="48.0" text=":" />
+            <Button fx:id="textBut_4" layoutX="604.0" layoutY="12.0" mnemonicParsing="false" onAction="#textButAction_4" onMouseEntered="#MouseMoveText" prefHeight="28.0" prefWidth="53.0" text="ę" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

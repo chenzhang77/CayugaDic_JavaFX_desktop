@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="400.0" styleClass="pane" stylesheets="@../../lib/add.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewDataController">
+   <children>
+      <Label layoutX="13.0" layoutY="57.0" prefHeight="43.0" prefWidth="86.0" text="English">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="13.0" layoutY="175.0" text="Cayuga">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstField" layoutX="19.0" layoutY="199.0" prefHeight="36.0" prefWidth="346.0" />
+      <TextField fx:id="lastField" layoutX="19.0" layoutY="101.0" prefHeight="37.0" prefWidth="346.0" />
+      <Button fx:id="update" layoutX="101.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleOk" text=" Add " />
+      <Button fx:id="cancel" layoutX="210.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button fx:id="textButAdd_4" layoutX="304.0" layoutY="161.0" mnemonicParsing="false" onAction="#textButAction_4" onMouseEntered="#MouseMoveText" prefHeight="28.0" prefWidth="53.0" text="ę" />
+      <Button fx:id="textButAdd_3" layoutX="184.0" layoutY="161.0" mnemonicParsing="false" onAction="#textButAction_3" onMouseEntered="#MouseMoveText" prefHeight="27.0" prefWidth="48.0" text=":" />
+      <Button fx:id="textButAdd_1" layoutX="125.0" layoutY="161.0" mnemonicParsing="false" onAction="#textButAction_1" onMouseEntered="#MouseMoveText" prefHeight="27.0" prefWidth="45.0" text="ˀ">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Button>
+      <Button fx:id="textButAdd_2" layoutX="243.0" layoutY="161.0" mnemonicParsing="false" onAction="#textButAction_2" onMouseEntered="#MouseMoveText" prefHeight="27.0" prefWidth="48.0" text="ǫ" />
+      <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="345.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../lib/smallLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
