@@ -73,6 +73,18 @@ public class DictionaryController {
 	  private RadioButton englishBut;
 	  @FXML
 	  private RadioButton cayugaBut; 
+	  
+	  @FXML
+	  private RadioButton related_1;
+	  @FXML
+	  private RadioButton related_2; 
+	  @FXML
+	  private RadioButton related_3; 
+	  
+	  @FXML
+	  private Button relatedWordBut;
+	  
+	  
 	  @FXML
 	  private Button searchBut;
 	  @FXML
@@ -150,8 +162,12 @@ public class DictionaryController {
 	        	    	}
     	    		else
             	    	for(String item :dictionaryCayugaList) {
-            	    		if(item.matches("^"+inputString+".*$"))
+            	    		//System.out.println(item + "          " +inputString);
+            	    		if(item.matches("^"+inputString+".*$")){
+            	    			//System.out.println("coming");
             	    			aa.add(item);
+            	    		}
+            	    			
             	    	}
     	    		
     	    		return aa;	
@@ -210,6 +226,17 @@ public class DictionaryController {
       	englishBut.setToggleGroup(group);
     	englishBut.setSelected(true);
     	cayugaBut.setToggleGroup(group);
+    	relatedWordBut.setVisible(false);
+    	
+    	final ToggleGroup group2 = new ToggleGroup();
+    	related_1.setToggleGroup(group2);
+    	related_2.setToggleGroup(group2);
+    	related_3.setToggleGroup(group2);
+    	related_1.setVisible(false);
+    	related_2.setVisible(false);
+    	related_3.setVisible(false);
+    	//related_3.setText("ni hao a");
+    	
     	textBut_1.setVisible(false);
     	textBut_2.setVisible(false);
     	textBut_3.setVisible(false);
@@ -226,6 +253,13 @@ public class DictionaryController {
     	                	textBut_2.setVisible(false);
     	                	textBut_3.setVisible(false);
     	                	textBut_4.setVisible(false);
+    	                	
+    	                	relatedWordBut.setVisible(false);
+    	                	related_1.setVisible(false);
+    	                	related_2.setVisible(false);
+    	                	related_3.setVisible(false);
+    	                	
+    	                	
     	                	mainApp.getData().clear();
     	                	inputText.clear();
     	                	
@@ -238,6 +272,13 @@ public class DictionaryController {
 		            		  logoImage.setVisible(true);
 		            		  showButton.setVisible(false);
 		            		  deleteButton.setVisible(false);
+		            		  
+		            		  relatedWordBut.setVisible(true);
+		            		related_1.setVisible(false);
+		            	    	related_2.setVisible(false);
+		            	    	related_3.setVisible(false);
+		            		  
+		            		  
     	                	textBut_1.setVisible(true);
     	                	textBut_2.setVisible(true);
     	                	textBut_3.setVisible(true);
@@ -248,6 +289,41 @@ public class DictionaryController {
     	        }
     	});
     	
+    	
+    	group2.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+    		
+    	    public void changed(ObservableValue<? extends Toggle> ov,
+    	        Toggle old_toggle, Toggle new_toggle) {
+    	    	
+    	    	
+	    	    	relatedWordBut.requestFocus();
+		            if (group2.getSelectedToggle() != null) {
+		            	mainApp.getData().clear();
+		            	String currentInput;
+		            	if(related_1.selectedProperty().getValue()) {
+		            		currentInput = related_1.getText();
+		                	
+		            	} else if (related_2.selectedProperty().getValue()) {
+		            		currentInput = related_2.getText();
+		            	}
+		            	
+		            	else {
+		            		currentInput = related_3.getText();
+		            	}
+		            	
+		        		for(int i=0; i<dictionaryCayugaList.size();i++) {
+		    			
+			    			if(dictionaryCayugaList.get(i).toString().matches(".*"+currentInput+".*")) {
+			    				//System.out.println("coming in update dictionaryCayugaList");
+			    				Dictionary tempData = new Dictionary();
+			    				tempData.setSecondcol(dictionaryEnglishList.get(i));
+			    				tempData.setThirdcol(dictionaryCayugaList.get(i));
+			    				mainApp.getData().add(tempData);
+			    			}
+		        		}
+		            }                
+	    	   }
+    	});
     	
   
     
@@ -269,7 +345,7 @@ public class DictionaryController {
 				String[] outstring = strLine.split("     ");
 				//System.out.println(outstring.length);
 				//if(outstring.length !=2)System.out.println(strLine);
-				dictionaryCayugaList.add(outstring[0]);
+				dictionaryCayugaList.add(outstring[0].replaceAll("\\p{C}", "").trim());
 				dictionaryEnglishList.add(outstring[1]);
 			}
 			br.close();
@@ -307,8 +383,8 @@ public class DictionaryController {
     	Dictionary tempData = new Dictionary();
         boolean okClicked = mainApp.showAddItemDialog(tempData);
         if (okClicked) {
-        	dictionaryCayugaList.add(tempData.getSecondcol());
-        	dictionaryEnglishList.add(tempData.getThirdcol());
+        	dictionaryCayugaList.add(tempData.getThirdcol());
+        	dictionaryEnglishList.add(tempData.getSecondcol());
             mainApp.getData().add(tempData);
         }     
     }
@@ -317,6 +393,10 @@ public class DictionaryController {
     public void onEnter(ActionEvent ae){
     	       
        	mainApp.getData().clear();
+    	related_1.setVisible(false);
+    	related_2.setVisible(false);
+    	related_3.setVisible(false);
+    	
        	searchBut.requestFocus();
        	String currentInput = inputText.getText();
        	if(currentInput.length() == 0) return;
@@ -361,7 +441,7 @@ public class DictionaryController {
 			for(int i=0; i<dictionaryCayugaList.size();i++) {
 				
 				if(dictionaryCayugaList.get(i).toString().matches(".*"+currentInput+".*")) {
-					System.out.println("coming in 1");
+					//System.out.println("coming in 1");
 					Dictionary tempData = new Dictionary();
 					tempData.setSecondcol(dictionaryEnglishList.get(i));
 					tempData.setThirdcol(dictionaryCayugaList.get(i));
@@ -370,34 +450,64 @@ public class DictionaryController {
 			}
 			
 		}
+		
+		
+		
+		
     }
     
     public void showAction(ActionEvent ae) {
     	
+   
+    	
     	Dictionary tempData = dictionaryTable.getSelectionModel().getSelectedItem();
+
  	   
 	    if (tempData !=null) {
-	    		    	
+	    		   
+	    	String english = tempData.getSecondcol();
+	    	String cayuga = tempData.getThirdcol();
+	    	
 	    	Dictionary old = mainApp.showUpdateItemDialog(tempData);
-           if (old != null) {
-        	   ListIterator<Dictionary> iterator =  mainApp.getData().listIterator(0);
-        	   int i = 0;
-        	   while (iterator.hasNext()){
-        		   Dictionary iteratoerDic = iterator.next();
-        		   
-        		   if(iteratoerDic.secondcolProperty().getValue().equals(old.secondcolProperty().getValue())
-        				   &&iteratoerDic.thirdcolProperty().getValue().equals(old.thirdcolProperty().getValue())){
-//        			   System.out.println("coming");
-//        			   System.out.println(mainApp.getData().get(i).getSecondcol());
-//        			   System.out.println(mainApp.getData().get(i).getThirdcol());
-//        			   System.out.println(tempData.getSecondcol());
-//        			   System.out.println(tempData.getThirdcol());
-        			   mainApp.getData().get(i).setSecondcol(tempData.getSecondcol());
-        			   mainApp.getData().get(i).setThirdcol(tempData.getThirdcol());
-        		   }
-        		   i++;     
-        	   }
-           } 	    	
+//           if (old != null) {
+//        	   ListIterator<Dictionary> iterator =  mainApp.getData().listIterator(0);
+//        	   int i = 0;
+//        	   while (iterator.hasNext()){
+//        		   Dictionary iteratoerDic = iterator.next();
+//        		   
+//        		   if(iteratoerDic.secondcolProperty().getValue().equals(old.secondcolProperty().getValue())
+//        				   &&iteratoerDic.thirdcolProperty().getValue().equals(old.thirdcolProperty().getValue())){
+////        			   System.out.println("coming");
+////        			   System.out.println(mainApp.getData().get(i).getSecondcol());
+////        			   System.out.println(mainApp.getData().get(i).getThirdcol());
+////        			   System.out.println(tempData.getSecondcol());
+////        			   System.out.println(tempData.getThirdcol());
+//        			   mainApp.getData().get(i).setSecondcol(tempData.getSecondcol());
+//        			   mainApp.getData().get(i).setThirdcol(tempData.getThirdcol());
+//        		   }
+//        		   i++;     
+//        	   }
+//        	   
+//        	   System.out.println("outside in update dictionaryEnglishList");
+//        	   System.out.println(old.secondcolProperty().getValue());
+//        	   System.out.println(old.thirdcolProperty().getValue());
+//        	   System.out.println(tempData.getSecondcol());
+//        	   System.out.println(tempData.getThirdcol());
+               for(int j=0; j<dictionaryEnglishList.size();j++) {
+            	   //System.out.println(dictionaryEnglishList.get(j));
+            	   if(dictionaryEnglishList.get(j).toString().equals(english) 
+            			   &&dictionaryCayugaList.get(j).toString().equals(cayuga))  {
+            		 //System.out.println("coming in update dictionaryEnglishList");
+            		   dictionaryEnglishList.set(j, tempData.getSecondcol());
+            		   dictionaryCayugaList.set(j, tempData.getThirdcol());
+            		   
+            	   }
+            	   
+               }
+        	   
+//           }
+           
+
 	    } else {
 	        // Nothing selected.
 	    	Alert alert = new Alert(AlertType.INFORMATION);
@@ -418,21 +528,29 @@ public class DictionaryController {
     	 
     	    	Alert alert = new Alert(AlertType.CONFIRMATION);
     	    	alert.setTitle("Confirmation Dialog");
-    	    	alert.setHeaderText("Confirmation Deletion");
+    	    	alert.setHeaderText("Delete");
     	    	alert.setContentText("Are you sure to delete this row from the database?");
 
     	    	Optional<ButtonType> result = alert.showAndWait();
     	    	if (result.get() == ButtonType.OK){
-    	    	    // ... user chose OK
-    	    		
+    
     	    		RemoveLine rl = new RemoveLine();
     	        	rl.removeLine(tempData.getThirdcol(),tempData.getSecondcol());
     	    		
     	    		dictionaryTable.getItems().remove(selectedIndex); 
     	    		
+	               for(int j=0; j<dictionaryEnglishList.size();j++) {
+	            	   
+	            	   if(dictionaryEnglishList.get(j).toString().equals(tempData.getSecondcol()) 
+	            			   &&dictionaryCayugaList.get(j).toString().equals(tempData.getThirdcol()))  {
+	            		   
+	            		 //System.out.println("coming in update dictionaryEnglishList");
+	            		 dictionaryEnglishList.remove(j);
+	            		 dictionaryCayugaList.remove(j);    	            		   
+	            	   }   
+	               }  	    		
     	    	} else {
-    	    	    // ... user chose CANCEL or closed the dialog
-    	    		
+	
     	    	}
     	    	
     	    } else {
@@ -446,8 +564,10 @@ public class DictionaryController {
     	
     }
     
+       
     @FXML
     public void searchButtonAction() {
+    	
     	onEnter(null);	
     }
     
@@ -489,7 +609,11 @@ public class DictionaryController {
     public void partialSearch(ActionEvent ae) {
     	
     	mainApp.getData().clear();
-       	
+    	related_1.setVisible(false);
+    	related_2.setVisible(false);
+    	related_3.setVisible(false);
+    	
+    	
        	String currentInput = inputText.getText();
        	if(currentInput.length() == 0) return;
 		if(englishBut.selectedProperty().getValue()) {
@@ -530,7 +654,7 @@ public class DictionaryController {
 			for(int i=0; i<dictionaryCayugaList.size();i++) {
 				
 				if(dictionaryCayugaList.get(i).toString().matches(".*"+currentInput+".*")) {
-					System.out.println("coming in 1");
+					//System.out.println("coming in update dictionaryCayugaList");
 					Dictionary tempData = new Dictionary();
 					tempData.setSecondcol(dictionaryEnglishList.get(i));
 					tempData.setThirdcol(dictionaryCayugaList.get(i));
@@ -542,4 +666,90 @@ public class DictionaryController {
     	
     }
       
+    public void relatedWord(ActionEvent ae) {
+    	
+    	String currentInput = inputText.getText();
+       	if(currentInput.length() < 3) partialSearch(null);
+       	int total = 0;
+    	int length = currentInput.length();
+       	int subStringLength = length-1;
+       	ArrayList<String> newList = new ArrayList<>(dictionaryCayugaList);
+       	
+       	for(int i =subStringLength; i>=2; i--) {
+       		if(total >=3) break;
+       		
+       		for(int j=0; j+i<=length; j++) {
+       			
+       			if(total >=3) break;
+       			
+       			String sub  = currentInput.substring(length-j-i,length-j);
+       			System.out.println(sub);
+       			
+       			for(int d=0; d<newList.size();d++) {
+    			
+	    			if(newList.get(d).toString().matches(".*"+sub+".*") && !newList.get(d).toString().matches(".*"+currentInput+".*")) {
+	    				
+	    				if(total == 0) {
+	    					newList.remove(d);
+	    					related_1.setText(sub);
+	    					related_1.setVisible(true);
+	    					total++;
+	    					break;
+	    				}
+	    				else if(total == 1) {
+	    					newList.remove(d);
+	    					related_2.setText(sub);
+	    					related_2.setVisible(true);
+	    					total++;
+	    					break;
+	    				}
+	    				else if(total == 2) {
+	    					newList.remove(d);
+	    					related_3.setText(sub);
+	    					related_3.setVisible(true);
+	    					total++;
+	    					break;
+	    				} else {
+	    					
+	    					break;
+	    				}		
+	    			}
+       			}
+       			
+       		}       		
+       	}
+       	
+//    	Dictionary tempData = new Dictionary();
+//		tempData.setSecondcol(dictionaryEnglishList.get(d));
+//		tempData.setThirdcol(dictionaryCayugaList.get(d));
+//		mainApp.getData().add(tempData);
+       
+//        for( int c = 0 ; c < length ; c++ )
+//        {
+//           for( int i = 1 ; i <= length - c ; i++ )
+//           {
+//        	   if(c+i == length) continue;
+//              sub = currentInput.substring(c, c+i);
+//              System.out.println(sub);
+//           }
+//        }
+//       	
+//			
+//		for(int i=0; i<dictionaryCayugaList.size();i++) {
+//			
+//			if(dictionaryCayugaList.get(i).toString().matches(".*"+currentInput+".*")) {
+//				//System.out.println("coming in update dictionaryCayugaList");
+//				Dictionary tempData = new Dictionary();
+//				tempData.setSecondcol(dictionaryEnglishList.get(i));
+//				tempData.setThirdcol(dictionaryCayugaList.get(i));
+//				mainApp.getData().add(tempData);
+//			}
+//		}
+			
+		
+       	
+       	
+
+    }
+    
 }

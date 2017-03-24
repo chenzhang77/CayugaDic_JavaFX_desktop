@@ -12,6 +12,22 @@
 	-fx-background-color: #c1dce0;
 }
 
+#midPane {
+	-fx-background-color: #eef3f7;
+}
+
+#searchBut {
+	-fx-background-color: #eef3f7;
+}
+
+#partialBut {
+	-fx-background-color: #eef3f7;
+}
+#relatedWordBut {
+	-fx-background-color: #eef3f7;
+}
+
+
 #leftPane {
 	-fx-background-color: white;/*#dabe90; #ea6c00*/
 }
